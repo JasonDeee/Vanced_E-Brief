@@ -4,6 +4,29 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="web_standard" name="shell-type" />
+
+    <!-- Open Graph / Social Meta Tags -->
+    <meta
+      property="og:title"
+      content="Bản Khảo Sát Định Hình Dự Án Website Nấm"
+    />
+    <meta
+      property="og:description"
+      content="Thông tin giúp Vanced Media cấu trúc website tối ưu trải nghiệm và chuyển đổi bán hàng tốt nhất cho bạn."
+    />
+    <meta property="og:image" content="../../Assets/SocialShare.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Bản Khảo Sát Định Hình Dự Án Website Nấm"
+    />
+    <meta
+      name="twitter:description"
+      content="Thông tin giúp Vanced Media cấu trúc website tối ưu trải nghiệm và chuyển đổi bán hàng tốt nhất cho bạn."
+    />
+    <meta name="twitter:image" content="../../Assets/SocialShare.png" />
+
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -640,7 +663,7 @@
                   <div class="mt-2">
                     <span
                       class="font-caption text-caption font-bold text-on-surface uppercase tracking-wider block mb-1"
-                      >Quyền công bố trên Website:</span
+                      >Các đối tác trên có thể hiển thị trên website chứ?:</span
                     >
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                       <label
@@ -906,11 +929,14 @@
                   Lưu bản nháp
                 </button> -->
                 <button
-                  class="w-1/2 sm:w-auto bg-[#e72166] text-surface-pure font-label-btn text-label-btn font-bold px-[1.2em] py-[0.4em] hover:bg-[#2a38a1] hover:shadow-[0_15px_25px_-7px_rgba(0,0,0,0.1)] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
+                  id="submit-btn"
+                  class="w-1/2 sm:w-auto bg-[#e72166] text-surface-pure font-label-btn text-label-btn font-bold px-[1.2em] py-[0.4em] hover:bg-[#2a38a1] hover:shadow-[0_15px_25px_-7px_rgba(0,0,0,0.1)] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   type="submit"
                 >
-                  <span class="">GỬI THÔNG TIN KHẢO SÁT</span>
-                  <span class="material-symbols-outlined text-[20px]"
+                  <span id="btn-text">GỬI THÔNG TIN KHẢO SÁT</span>
+                  <span
+                    id="btn-icon"
+                    class="material-symbols-outlined text-[20px] transition-transform duration-300"
                     >arrow_forward</span
                   >
                 </button>
@@ -952,39 +978,7 @@
             </div>
           </form>
         </div>
-        <script>
-          function handleFormSubmit() {
-            const form = document.getElementById("mushroom-intake-form");
-            const successBanner = document.getElementById("success-banner");
-
-            // Smooth scroll to success state
-            successBanner.classList.remove("hidden");
-            successBanner.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-
-            // Visual cue for submitted state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.innerText = "ĐÃ GỬI DỮ LIỆU";
-            submitBtn.disabled = true;
-            submitBtn.classList.remove("bg-[#e72166]", "hover:bg-[#2a38a1]");
-            submitBtn.classList.add(
-              "bg-neutral-gray-code",
-              "text-on-surface",
-              "cursor-not-allowed",
-            );
-          }
-
-          function saveDraft() {
-            const brandName = document.getElementById("brand-name").value;
-            alert(
-              brandName
-                ? `Bản nháp cho thương hiệu "${brandName}" đã được lưu tạm trên trình duyệt của bạn.`
-                : "Đã lưu bản nháp tạm thời vào bộ nhớ trình duyệt!",
-            );
-          }
-        </script>
+        <script src="submit.js"></script>
       </div>
     </main>
     <footer
