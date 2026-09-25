@@ -46,7 +46,9 @@ function doPost(e) {
       data.flow_b2c || "",
       data.shipping_zones || "",
       data.shipping_fees || "",
-      data.additional_notes || ""
+      data.additional_notes || "",
+      data.public_pricing || "",
+      data.special_pricing || ""
     ];
     
     sheet.appendRow(rowData);

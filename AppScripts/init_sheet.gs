@@ -29,7 +29,9 @@ function initMushroomSurveySheet() {
     "Luồng B2C",
     "CS Giao hàng",
     "Phí Ship",
-    "Ghi chú thêm"
+    "Ghi chú thêm",
+    "Công khai giá",
+    "Giá đặc biệt"
   ];
   
   // Kiểm tra nếu chưa có header thì mới chèn để tránh ghi đè dữ liệu cũ
@@ -40,5 +42,27 @@ function initMushroomSurveySheet() {
     
     // Tự động điều chỉnh kích thước cột (tương đối)
     sheet.autoResizeColumns(1, headers.length);
+  }
+}
+
+function addPricingColumns() {
+  const sheetName = "Survey Data";
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName(sheetName);
+  
+  if (!sheet) return;
+  
+  const lastCol = sheet.getLastColumn();
+  
+  // Đọc header hiện tại để tránh duplicate
+  const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  const newCols = ["Công khai giá", "Giá đặc biệt"];
+  
+  if (headers.indexOf(newCols[0]) === -1) {
+    sheet.getRange(1, lastCol + 1, 1, 2).setValues([newCols])
+      .setFontWeight("bold")
+      .setBackground("#e11a62")
+      .setFontColor("white");
+    sheet.autoResizeColumns(lastCol + 1, 2);
   }
 }
